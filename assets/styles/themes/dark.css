@@ -1,0 +1,5 @@
+@media (prefers-color-scheme: dark) {
+    .appBlock {
+        background-color: rgba(65, 65, 65, 0.397);
+    }
+}
