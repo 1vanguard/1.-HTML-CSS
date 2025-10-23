@@ -1,8 +1,7 @@
 /* Main css document */
 
-/* Base styles for the document */
 :root {
-    color-scheme: light /* dark */;
+    color-scheme: light dark;
 }
 
 html {
@@ -15,23 +14,67 @@ html {
 }
 
 body {
-    background-color: #fff;
-    color: #222;
+    background-color: light-dark(#fff, #000);
+    color: light-dark(#282828, #d8d8d8);
     display: flex;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    line-height: 1.6;
+    line-height: 1.5;
     flex-direction: column;
     flex-grow: 1;
+    position: relative;
+    z-index: 0;
 }
 
-body > #root {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+body::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 2;
 }
 
-body > #root > * {
+body::before {
+    /* background-image: url('/images/clean-gray-paper.png'); */
+    /* background-image: url('/images/crisp-paper-ruffles.png'); */
+    background-attachment: fixed;
+    background-image: url("/images/clean-textile.png");
+    background-position: center;
+    background-repeat: repeat;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+    body::after {
+        /* backdrop-filter: blur(1px); */
+        background: #282828;
+        background: radial-gradient(circle, rgba(115, 115, 115, 0.5) 0%, rgba(0, 0, 0, 1) 100%);
+    }
+}
+@media (prefers-color-scheme: light) {
+    body::after {
+        background: #d8d8d8;
+        background: radial-gradient(circle, rgba(0, 0, 0, 0.35) 0%, rgba(255, 255, 255, 0.15) 100%);
+    }
+}
+
+body > * {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    z-index: 3;
+}
+
+body > * > * {
     flex-grow: 1;
 }
 
@@ -42,19 +85,28 @@ img {
 }
 /* --- */
 
+/* @media (prefers-color-scheme: dark) {
+    .appBlock {
+        background-color: rgba(65, 65, 65, 0.397);
+    }
+}
+@media (prefers-color-scheme: light) {
+    .appBlock {
+        background-color: rgba(255, 255, 255, 0.397);
+    }
+} */
+
 .app {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-/* .appBody {
-    flex-grow: 1;
-} */
-
-.appBlock {
+/* .appBlock {
+    background-color: aquamarine;
+    background-color: light-dark(white, black);
     padding: 1.5rem;
-}
+} */
 
 .container {
     margin: 0 auto;
@@ -65,42 +117,4 @@ img {
 
 .d-flex {
     display: flex;
-}
-
-#root {
-    position: relative;
-}
-
-#root::after {
-    /* background-image: url('/images/clean-gray-paper.png'); */
-    /* background-image: url('/images/crisp-paper-ruffles.png'); */
-    background-image: url('/images/clean-textile.png');
-    background-position: center;
-    background-repeat: repeat;
-    display: block;
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-}
-
-#root::before {
-    background: #adadad;
-    background: radial-gradient(circle, rgba(173, 173, 173, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    display: block;
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 0;
-}
-
-#root > * {
-    position: relative;
-    z-index: 2;
 }
