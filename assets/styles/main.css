@@ -4,6 +4,29 @@
     color-scheme: light dark;
 }
 
+/* Custom scrolbar */
+* {
+    scrollbar-color: rgba(0, 0, 0, 0.3) rgba(240, 240, 240, 0.2);
+    scrollbar-width: thin;
+}
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+*::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+*::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 3px solid rgba(240, 240, 240, 0.2);
+}
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+/* --- */
+
 html {
     display: flex;
     font-size: 16px;
@@ -39,9 +62,9 @@ body::after {
 }
 
 body::before {
+    background-attachment: fixed;
     /* background-image: url('/images/backgrounds/clean-gray-paper.png'); */
     /* background-image: url('/images/backgrounds/crisp-paper-ruffles.png'); */
-    background-attachment: fixed;
     background-image: url("/images/backgrounds/clean-textile.png");
     background-position: center;
     background-repeat: repeat;
@@ -87,6 +110,15 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    border: solid 1px light-dark(#000, #fff);
+    padding: 0.25rem;
 }
 
 .align-items-center {
