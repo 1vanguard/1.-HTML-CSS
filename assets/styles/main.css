@@ -229,6 +229,7 @@ th {
 
 .app-body main {
     max-width: 70%;
+    order: 2;
     width: 100%;
 }
 
